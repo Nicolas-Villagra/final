@@ -1,0 +1,26 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block titulo %}formulario de registro {% endblock titulo %}
+
+{% block contenido_que_cambia %}
+
+    
+<h4> Registro </h4> 
+<form action= "{% url 'register' %}" method="POST"> {% csrf_token %} 
+
+    <table>
+
+        {{ formulario.as_table }}
+
+    </table>
+
+    <input type="submit" value="Registrar Usuario">
+
+</form>
+
+
+{% endblock contenido_que_cambia %}
+
+

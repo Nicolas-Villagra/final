@@ -1,0 +1,18 @@
+{% extends "gimnasioApp/padre.html" %}
+
+{% load static %}
+
+{% block titulo %} Busqueda Cliente {% endblock titulo %}
+
+{% block contenido_que_cambia %}
+
+<form action="{% url 'buscar' %}" method="GET"> 
+
+    <input type="text" name="nombre" id="nombre" placeholder="Insertar Nombre">
+
+    <input type="submit" value="buscar">
+
+
+</form>
+    
+{% endblock contenido_que_cambia %}

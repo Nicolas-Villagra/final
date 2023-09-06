@@ -1,0 +1,23 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block titulo %}Editar  Perfil de {{nombreusuario}} {% endblock titulo %}
+
+{% block contenido_que_cambia %}    
+<h4> {{ mensaje}} </h4> 
+
+<form action= "{% url 'editarPerfil' %}" method="POST"> {% csrf_token %} 
+
+    <table  style="color:black">
+
+        {{ formulario.as_table }}
+
+    </table>
+
+    <input type="submit" value="Guardar Cambios">
+
+</form>
+
+
+{% endblock contenido_que_cambia %}

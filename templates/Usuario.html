@@ -1,0 +1,64 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block titulo %}Blog {% endblock titulo %}
+
+{% block contenido_que_cambia %}
+
+    
+<h4> Blog </h4> 
+<form action= "{% url 'Usuario' %}" method="POST"> {% csrf_token %} 
+
+    <table>
+
+        {{ formulario.as_table }}
+
+    </table>
+
+</form>
+<h5>{{ mensaje }}</h5>
+<table>
+    <thead>
+        <tr>
+        <tr>Nombre</tr>
+
+        <tr>Imagen</tr>
+
+        <tr>descripcion</tr>     
+        
+        <tr>mail</tr>   
+
+        <tr>Opciones</tr>
+        </tr>
+    </thead>
+    <tbody>
+    {% for u in Usuario %}
+    <tr>
+        <td>
+            {{ u.nombre }}
+        </td>
+        <td>
+            {{ u.imagen }}
+        </td>
+        <td>
+            {{ u.descripcion }}
+        </td>
+        <td>
+            {{ u.mail }}
+        </td>
+        <td>
+           
+       </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+</form>
+
+
+{% endblock contenido_que_cambia %}
+
+
