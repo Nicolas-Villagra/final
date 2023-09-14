@@ -27,9 +27,9 @@
     </thead>
     <tbody>
    {% for carga in cargar %}
-        <tr>       
+        <tr> <td>      
             { carga.nombre}
-            <td>
+            
                 <a class="btn btn-danger" href="{% url 'eliminarCargar' cargar.id %}">Eliminar</a>
                 <a class="btn btn-success" href="{% url 'editarcargar' cargar.id %}">Editar</a>
         </td>
