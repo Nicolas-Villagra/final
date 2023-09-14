@@ -29,6 +29,7 @@ urlpatterns = [
     path("acercademi/", acercademi, name="acercademi"),
     path("appRegister", include("appRegister.urls")),
     path("appLogin", include("appLogin.urls")),
+    path("appPerfiles", include("appPerfiles.urls")),
 
 
    

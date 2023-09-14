@@ -10840,8 +10840,8 @@ textarea.form-control-lg {
 
 header.masthead {
   position: relative;
-  background-color: #343a40;
-  background: url("media/playstation.jpg") no-repeat center center;
+  background-color: #f2e7c3;
+  background-image:("assets/img/playstation.jpg") no-repeat center center;
   background-size: cover;
   padding-top: 8rem;
   padding-bottom: 8rem;
@@ -10896,8 +10896,9 @@ header.masthead h1, header.masthead .h1 {
 
 .call-to-action {
   position: relative;
-  background-color: #343a40;
-  background: url("media/playstation.jpg") no-repeat center center;
+  background-color: #084298;
+  background-image:("assets/img/playstation.jpg")
+  no-repeat center center;
   
   background-size: cover;
   padding-top: 7rem;
@@ -10906,7 +10907,7 @@ header.masthead h1, header.masthead .h1 {
 .call-to-action:before {
   content: "";
   position: absolute;
-  background-color: #1c375e;
+  background-color: #084298;
   height: 100%;
   width: 100%;
   top: 0;

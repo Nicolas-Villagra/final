@@ -1,0 +1,43 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block titulo %}CARGARRRRR {% endblock titulo %}
+
+{% block contenido_que_cambia %}    
+
+<h4> {{ mensaje}} </h4>
+<form action="{% url 'cargar' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %} 
+
+    <table  style="color:black">
+
+        {{ formulario.as_table }}
+
+    </table>
+
+    <input type="submit" value="Guardar ">
+
+
+</form>
+
+<table>
+    <thead>
+        <tr>Nombre   </tr> 
+        <tr>   Opciones</tr>    
+    </thead>
+    <tbody>
+   {% for carga in cargar %}
+        <tr>       
+            { carga.nombre}
+            <td>
+                <a class="btn btn-danger" href="{% url 'eliminarCargar' cargar.id %}">Eliminar</a>
+                <a class="btn btn-success" href="{% url 'editarcargar' cargar.id %}">Editar</a>
+        </td>
+    </tr> 
+    {% endfor %}
+    </tbody>
+</table>   
+
+
+
+{% endblock contenido_que_cambia %}

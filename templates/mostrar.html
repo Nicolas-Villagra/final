@@ -1,18 +1,31 @@
-{% extends "gimnasioApp/padre.html" %}
+{% extends "padre.html" %}
 
 {% load static %}
 
-{% block titulo %} Busqueda Cliente {% endblock titulo %}
+{% block titulo %} Busqueda {% endblock titulo %}
+
+{% if Usuario %}
+
+<h5> Resultados de la busqueda</h5>
+  
+    {% for u in usuario %}
+
+        <h5>{{ u.nombre }} - {{ u.apellido }} </h5>
+
+    {% endfor %}
+
+{% else %}
+
+    <h5> No se encontraron resultados </h5>
+
+
+{% endif %}
+
+
+{% endblock contenido_que_cambia %}
+
+
+
 
 {% block contenido_que_cambia %}
 
-<form action="{% url 'buscar' %}" method="GET"> 
-
-    <input type="text" name="nombre" id="nombre" placeholder="Insertar Nombre">
-
-    <input type="submit" value="buscar">
-
-
-</form>
-    
-{% endblock contenido_que_cambia %}

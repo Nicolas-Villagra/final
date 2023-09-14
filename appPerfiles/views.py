@@ -1,69 +1,74 @@
 from django.shortcuts import render
-from .forms import UsuarioForm
+from .forms import *
 from .models import *
 from appLogin.views import obtenerAvatar
 
 # Create your views here.
-def Usuario(request):
+def cargar(request):
     if request.method=="POST":
-        form=UsuarioForm(request.POST) 
+        form=CargarForm(request.POST) 
         if  form.is_valid():
             info=form.cleaned_data
             nombre=info["nombre"]
-            imangen=info["imagen"]
-            descripcion=info["turno"]
-            mail=info["mail"]
-            usuario= UsuarioForm (nombre=nombre, imagen=request.FILES["imagen"], descripcion=descripcion, mail=mail)
-            usuario.save()
-            mensaje="Creado"
+            imagen=info["imagen"]
+            descripcion=info["descripcion"]
+            email=info["email"]
+            cargar= CargarForm (nombre=nombre, imagen=request.FILES["imagen"], descripcion=descripcion, email=email)
+            cargar.save()
+            mensaje="Cargado..."
             
         else:
-            mensaje="Datos Invalidos"
+           mensaje="Datos Invalidos"
 
-        form_usuario=UsuarioForm()
-        return render(request,"templates/inicio.html", {"mensaje":mensaje, "formulario":form,"Avatar":obtenerAvatar(request) })
+        formulario_cargar=CargarForm()
+        return render(request,"templates/cargar.html", {"mensaje":mensaje, "formulario":formulario_cargar,"Avatar":obtenerAvatar(request) })
     else:
-       usuario=Usuario.objects.all()
-    form_usuario=UsuarioForm()
-    return render(request,"template/usuario.html", {"formulario":form,"Usuario":usuario})
+        formulario_cargar=CargarForm()
+    cargar=Cargar.objects.all()
+    return render(request,"templates/cargar.html", {"formulario":formulario_cargar,"Cargar":cargar })
 
-def eliminarUsuario(request, id):
-    usuario = Usuario.objects.get(id=id)
-    usuario.delete()
-    usuario = Usuario.objects.all()
-    formulario_Usuario=UsuarioForm()
-    mensaje="Usuario Eliminado"
-    return render(request,"templates/eliminarUsuario.html", {"mensaje": mensaje,"formulario":formulario_Usuario, "Usuario":usuario})
+def eliminarCargar(request, id):
+    cargar =cargar.objects.get(id=id)
+    cargar.delete()
+    cargar = cargar.objects.all()
+    formulario_cargar=CargarForm()
+    mensaje="Eliminado"
+    return render(request,"templates/cargar.html", {"mensaje": mensaje,"formulario":formulario_cargar, "cargar":cargar})
 
-def editarUsuario(request, id):
-    usuario=Usuario.objects.get(id=id)
+def editarcargar(request, id):
+    Cargar=cargar.objects.get(id=id)
     if request.method=="POST":
-        form=UsuarioForm(request.POST)
+        form=CargarForm(request.POST)
         if form.is_valid():
             info=form.cleaned_data
-            usuario.nombre=["nombre"]
-            usuario.imagen=info["imagen"]
-            usuario.descripcion=info["descripcion"]
-            usuario.mail=info["mail"]
-            usuario.save()
-            mensaje="usuario Editado"
-            usuario=Usuario.objects.all()
-            formulario_cliente=UsuarioForm()
-            return render (request, "gimnasioApp/editarsuario.html",{"mensaje":mensaje,"formulario": formulario_cliente, "Usuario":usuario})
+            Cargar.nombre=["nombre"]
+            Cargar.imagen=info["imagen"]
+            Cargar.descripcion=info["descripcion"]
+            Cargar.email=info["email"]
+            Cargar.save()
+            mensaje="Editado"
+            Cargar=cargar.objects.all()
+            formulario_cargar=CargarForm()
+            return render (request, "templates/cargar.html",{"mensaje":mensaje,"formulario": formulario_cargar, "Cargar":cargar})
     else:
 
-        usuario=Usuario.objects.get(id=id)
-        usuario=UsuarioForm(initial= {"nombre":usuario.nombre,"imagen":request.FILES["imagen"],"descripcion":usuario.descripcion,"mail":usuario.mail})
-        return render(request, "gimnasioApp/editarUsuario.html", {"formulario":usuario, "clientes":usuario})
+        Cargar=cargar.objects.get(id=id)
+        Cargar=CargarForm(initial= {"nombre":cargar.nombre,"imagen":request.FILES["imagen"],"descripcion":cargar.descripcion,"email":cargar.email})
+        return render(request, "templates/cargar.html", {"formulario":formulario_cargar, "Cargar":cargar})
     
 
-def busquedaUsuario(request):
+def busquedacargar(request):
     return render (request, "template/busquedaUsuario.html")
 
 def buscar(request):
     nombre=request.GET["nombre"]
     if nombre!="":
-       Usuario=Usuario.objects.filter(nombre__icontains=nombre)
-       return render(request,"template/resultado.html",{"Usuario":Usuario})
+       cargar=cargar.objects.filter(nombre__icontains=nombre)
+       return render(request,"template/resultado.html",{"cargar":cargar})
     else:
         return render (request,"templates/busquedaUsuario.html")
+    
+
+def listar_Usuario(request):
+    cargar=cargar.objects.all()
+    return render (request, "templates/resultado.html",{"cargar":cargar})

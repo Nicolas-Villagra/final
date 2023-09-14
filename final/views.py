@@ -14,4 +14,4 @@ def inicio(request):
 #Contiene Avatar.!
 def acercademi(request):
     avatar=obtenerAvatar(request)
-    return render (request, "templates/inicio.html",{"Avatar":obtenerAvatar(request)})
+    return render (request, "templates/acercademi.html",{"Avatar":obtenerAvatar(request)})

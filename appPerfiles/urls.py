@@ -4,13 +4,13 @@ from .views import *
 
 urlpatterns = [
 
-path("Usuario/", Usuario, name="Usuario"),
+path("cargar/", cargar, name="cargar"),
 
-path("eliminarUsuario/<id>", eliminarUsuario, name="eliminarUsuario"),
+path("elimininarCargar/", eliminarCargar, name="eliminarCargar"),
 
-path("editarUsuario/<id>", editarUsuario, name="editarUsuario"),
+path("editarcargar/", editarcargar, name="editarcargar"),
 
-path("busquedaUsuario/", busquedaUsuario, name="busquedaUsuario"),
+path("busquedacargar/", busquedacargar, name="busquedacargar"),
 
 path("buscar/", buscar, name="buscar"),
 
