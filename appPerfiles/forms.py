@@ -8,4 +8,4 @@ class CargarForm(forms.Form):
     imagen=forms.ImageField(label="imagen")
     descripcion=forms.CharField(max_length=200)
     email=forms.CharField(max_length=30)
-    
+    direccion=forms.URLField(max_length=50)

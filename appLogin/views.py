@@ -59,11 +59,8 @@ def agregarAvatar(request):
         form=AvatarForm(request.POST, request.FILES)
         if form.is_valid():
             avatar=Avatar(user=request.user, imagen=request.FILES["imagen"])
-
-            avatarviejo=Avatar.objects.filter(user=request.user)
-            if len (avatarviejo)>0:
-                avatarviejo[0].delete()
-            avatar.save()
+            print(avatar)
+            
             return render (request, "templates/inicio.html", {"mensaje":"Avatar cargado correctamente", "Avatar":obtenerAvatar(request)})
         else:
             return render (request, "templates/agregarAvatar.html",{"formulario":form, "usuario":request.user, "Avatar":obtenerAvatar(request)})

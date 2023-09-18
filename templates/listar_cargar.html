@@ -1,0 +1,30 @@
+
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block titulo %} listar todos los juegos  {% endblock titulo %}
+
+{% block contenido_que_cambia %}
+
+<form action="{% url 'listar_cargar' %}" method="GET" enctype="multipart/form-data"> 
+
+<h5> Resultados de la busqueda</h5>
+
+
+
+    <h4>{{ carga.nombre }}</h4>
+
+    <img src="{{ carga.imagen.url }}" alt="media">   
+
+    <h4>{{ carga.descripcion }}</h4>
+
+    <h4>{{ carga.email }}</h4>
+
+    <h4>{{ carga.direccion }}</h4>
+
+
+
+</form>
+
+{% endblock contenido_que_cambia %}

@@ -10841,7 +10841,7 @@ textarea.form-control-lg {
 header.masthead {
   position: relative;
   background-color: #f2e7c3;
-  background-image:("assets/img/playstation.jpg") no-repeat center center;
+  background-image:("/media/masthead.jpg") ;
   background-size: cover;
   padding-top: 8rem;
   padding-bottom: 8rem;
@@ -10897,7 +10897,7 @@ header.masthead h1, header.masthead .h1 {
 .call-to-action {
   position: relative;
   background-color: #084298;
-  background-image:("assets/img/playstation.jpg")
+  background-image:("media/masthead.jpg")
   no-repeat center center;
   
   background-size: cover;

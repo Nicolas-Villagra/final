@@ -6,7 +6,7 @@
 
 {% block contenido_que_cambia %}    
 
-<h4> {{ mensaje}} </h4>
+
 <form action="{% url 'cargar' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %} 
 
     <table  style="color:black">
@@ -19,25 +19,27 @@
 
 
 </form>
-
 <table>
     <thead>
-        <tr>Nombre   </tr> 
-        <tr>   Opciones</tr>    
+        <tr>
+        <tr>Nombre:  </tr> 
+        
+        </tr>
     </thead>
     <tbody>
-   {% for carga in cargar %}
-        <tr> <td>      
-            { carga.nombre}
+    {% for i in carga %}
+    <tr>
+        <td>
+            {{ i.nombre }}
+            <button>
+            <a class="btn btn-danger" href="{% url 'eliminarCargar' cargar.id %}">Eliminar</a>
             
-                <a class="btn btn-danger" href="{% url 'eliminarCargar' cargar.id %}">Eliminar</a>
-                <a class="btn btn-success" href="{% url 'editarcargar' cargar.id %}">Editar</a>
+            </button>
         </td>
-    </tr> 
-    {% endfor %}
+    </tr>
+    {% endfor %} 
     </tbody>
-</table>   
-
-
-
+</table>
 {% endblock contenido_que_cambia %}
+
+
